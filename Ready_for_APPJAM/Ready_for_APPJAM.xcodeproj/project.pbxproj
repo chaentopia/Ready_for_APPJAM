@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3C89ADC2A4895770019D676 /* IGShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89ADB2A4895770019D676 /* IGShareViewController.swift */; };
 		C3FAE9092A45B46A005F5063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FAE9082A45B46A005F5063 /* AppDelegate.swift */; };
 		C3FAE90B2A45B46A005F5063 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FAE90A2A45B46A005F5063 /* SceneDelegate.swift */; };
 		C3FAE9102A45B46A005F5063 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3FAE90E2A45B46A005F5063 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3C89ADB2A4895770019D676 /* IGShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGShareViewController.swift; sourceTree = "<group>"; };
 		C3FAE9052A45B46A005F5063 /* Ready_for_APPJAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ready_for_APPJAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FAE9082A45B46A005F5063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3FAE90A2A45B46A005F5063 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				C3FAE9082A45B46A005F5063 /* AppDelegate.swift */,
 				C3FAE90A2A45B46A005F5063 /* SceneDelegate.swift */,
 				C3FAE91C2A45B4C7005F5063 /* LoginViewController.swift */,
+				C3C89ADB2A4895770019D676 /* IGShareViewController.swift */,
 				C3FAE92F2A45D943005F5063 /* UIImageView+.swift */,
 				C3FAE92D2A45C5F8005F5063 /* ProfileViewController.swift */,
 				C3FAE90E2A45B46A005F5063 /* Main.storyboard */,
@@ -166,6 +169,7 @@
 			files = (
 				C3FAE91D2A45B4C7005F5063 /* LoginViewController.swift in Sources */,
 				C3FAE9092A45B46A005F5063 /* AppDelegate.swift in Sources */,
+				C3C89ADC2A4895770019D676 /* IGShareViewController.swift in Sources */,
 				C3FAE92E2A45C5F8005F5063 /* ProfileViewController.swift in Sources */,
 				C3FAE90B2A45B46A005F5063 /* SceneDelegate.swift in Sources */,
 				C3FAE9302A45D943005F5063 /* UIImageView+.swift in Sources */,
