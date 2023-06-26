@@ -58,7 +58,8 @@ extension IGShareViewController {
                 
                 
                 let pasteboardItems : [String:Any] = [
-                    "com.instagram.sharedSticker.stickerImage": imageData,
+//                    "com.instagram.sharedSticker.stickerImage": imageData,
+                    "com.instagram.sharedSticker.backgroundImage": imageData,
                     "com.instagram.sharedSticker.backgroundTopColor" : "#000000",
                     "com.instagram.sharedSticker.backgroundBottomColor" : "#000000",
                     
