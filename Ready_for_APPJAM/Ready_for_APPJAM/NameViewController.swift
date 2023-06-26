@@ -15,6 +15,17 @@ final class NameViewController: UIViewController {
     var name: NSString = "정채은"
     var isFullName: Bool = true
     
+    private let inputTextField = UITextField().then {
+        $0.placeholder = "정채은"
+        $0.backgroundColor = .white
+        $0.textAlignment = .center
+    }
+    
+    private lazy var confirmButton = UIButton().then {
+        $0.setTitle("확인", for: .normal)
+        $0.addTarget(self, action: #selector(confirmButtonTapped), for: .touchUpInside)
+    }
+    
     private lazy var nameLabel = UILabel().then {
         $0.text = String(name)
         $0.font = .boldSystemFont(ofSize: 40)
@@ -41,8 +52,23 @@ extension NameViewController {
     }
     
     private func setLayout() {
+        view.addSubview(inputTextField)
+        view.addSubview(confirmButton)
         view.addSubview(nameLabel)
         view.addSubview(changeButton)
+        
+        inputTextField.snp.makeConstraints {
+            $0.bottom.equalTo(nameLabel.snp.top).offset(-50)
+            $0.centerX.equalToSuperview()
+            $0.height.equalTo(20)
+            $0.width.equalTo(150)
+        }
+        
+        confirmButton.snp.makeConstraints {
+            $0.top.equalTo(inputTextField).offset(10)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(50)
+        }
         
         nameLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
@@ -51,6 +77,12 @@ extension NameViewController {
             $0.top.equalTo(nameLabel.snp.bottom).offset(30)
             $0.centerX.equalToSuperview()
         }
+    }
+    
+    @objc
+    private func confirmButtonTapped() {
+        name = inputTextField.text! as NSString
+        nameLabel.text = String(name)
     }
     
     @objc
