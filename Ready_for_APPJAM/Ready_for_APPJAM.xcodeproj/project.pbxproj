@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3A4614A2A4AD0FC00734EF8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A461492A4AD0FC00734EF8 /* TableViewController.swift */; };
+		C3A4614C2A4AD2BF00734EF8 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4614B2A4AD2BF00734EF8 /* TableViewCell.swift */; };
 		C3A79A0D2A496E2700D3EFD8 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A79A0C2A496E2700D3EFD8 /* NameViewController.swift */; };
 		C3C89ADC2A4895770019D676 /* IGShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89ADB2A4895770019D676 /* IGShareViewController.swift */; };
 		C3FAE9092A45B46A005F5063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FAE9082A45B46A005F5063 /* AppDelegate.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C3A461492A4AD0FC00734EF8 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		C3A4614B2A4AD2BF00734EF8 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C3A79A0C2A496E2700D3EFD8 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		C3C89ADB2A4895770019D676 /* IGShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGShareViewController.swift; sourceTree = "<group>"; };
 		C3FAE9052A45B46A005F5063 /* Ready_for_APPJAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ready_for_APPJAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +83,8 @@
 				C3FAE92F2A45D943005F5063 /* UIImageView+.swift */,
 				C3FAE92D2A45C5F8005F5063 /* ProfileViewController.swift */,
 				C3A79A0C2A496E2700D3EFD8 /* NameViewController.swift */,
+				C3A4614B2A4AD2BF00734EF8 /* TableViewCell.swift */,
+				C3A461492A4AD0FC00734EF8 /* TableViewController.swift */,
 				C3FAE90E2A45B46A005F5063 /* Main.storyboard */,
 				C3FAE9112A45B46C005F5063 /* Assets.xcassets */,
 				C3FAE9132A45B46C005F5063 /* LaunchScreen.storyboard */,
@@ -173,6 +179,8 @@
 				C3FAE91D2A45B4C7005F5063 /* LoginViewController.swift in Sources */,
 				C3FAE9092A45B46A005F5063 /* AppDelegate.swift in Sources */,
 				C3A79A0D2A496E2700D3EFD8 /* NameViewController.swift in Sources */,
+				C3A4614C2A4AD2BF00734EF8 /* TableViewCell.swift in Sources */,
+				C3A4614A2A4AD0FC00734EF8 /* TableViewController.swift in Sources */,
 				C3C89ADC2A4895770019D676 /* IGShareViewController.swift in Sources */,
 				C3FAE92E2A45C5F8005F5063 /* ProfileViewController.swift in Sources */,
 				C3FAE90B2A45B46A005F5063 /* SceneDelegate.swift in Sources */,
