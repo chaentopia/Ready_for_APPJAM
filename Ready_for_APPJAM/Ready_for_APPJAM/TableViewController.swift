@@ -16,7 +16,7 @@ struct Model {
 
 final class TableViewController: UIViewController {
     
-    var tableViewModel = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"]
+    var tableViewModel: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"]
     
     lazy var tableView = UITableView().then {
         $0.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.identifier)
@@ -43,6 +43,14 @@ extension TableViewController {
             $0.edges.equalToSuperview()
         }
     }
+    
+    @objc func deleteButtonTapped(_ sender: UIButton) {
+        let point = sender.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+        tableViewModel.remove(at: indexPath.row)
+//        tableView.deleteRows(at: [indexPath], with: .right)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }
 
 extension TableViewController: UITableViewDelegate, UITableViewDataSource {
@@ -54,7 +62,8 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else {
             return UITableViewCell()
         }
-//        let item = dummy[indexPath.row]
+        //        let item = dummy[indexPath.row]
+        cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         cell.configureCell(tableViewModel[indexPath.row])
         return cell
     }

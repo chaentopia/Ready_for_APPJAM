@@ -18,6 +18,8 @@ final class TableViewCell: UITableViewCell {
     
     lazy var deleteButton = UIButton().then {
         $0.setImage(UIImage(systemName: "trash"), for: .normal)
+//        $0.setTitle("친구추가", for: .normal)
+//        $0.titleLabel?.textColor = .black
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
