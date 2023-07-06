@@ -7,10 +7,35 @@
 
 import UIKit
 
-class KakaoFriendViewController: UIViewController {
+import SnapKit
+import Then
+
+final class KakaoFriendViewController: UIViewController {
+    
+    private let inviteBannerView = InviteBannerView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        setUI()
+    }
+}
+
+extension KakaoFriendViewController {
+    private func setUI() {
+        setStyle()
+        setLayout()
+    }
+    
+    private func setStyle() {
+        view.backgroundColor = .black
+    }
+    
+    private func setLayout() {
+        view.addSubview(inviteBannerView)
+        inviteBannerView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(76)
+        }
     }
 }
