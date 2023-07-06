@@ -12,25 +12,25 @@ import Then
 
 final class RecommendingSegmentedControl: UISegmentedControl {
     
+    // MARK: - Variables
+    // MARK: Component
     private lazy var selectedUnderlineView: UIView = {
         let width = self.bounds.size.width / 2
         let height = 2.0
-        //        let xPosition = CGFloat(self.selectedSegmentIndex * Int(width))
         let xPosition = 0.0
-        let yPosition = self.bounds.size.height - 2.0
+        let yPosition = self.bounds.size.height - height
         let frame = CGRect(x: xPosition, y: yPosition, width: width, height: height)
         let view = UIView(frame: frame)
         view.backgroundColor = .yellow
-        self.addSubview(view)
+//        self.addSubview(view)
         return view
     }()
     
     private lazy var defaultUnderLineView: UIView = {
         let width = self.bounds.size.width
         let height = 2.0
-        //        let xPosition = CGFloat(self.selectedSegmentIndex * Int(width))
         let xPosition = 0.0
-        let yPosition = self.bounds.size.height - 2.0
+        let yPosition = self.bounds.size.height - height
         let frame = CGRect(x: xPosition, y: yPosition, width: width, height: height)
         let view = UIView(frame: frame)
         view.backgroundColor = .gray
@@ -38,42 +38,48 @@ final class RecommendingSegmentedControl: UISegmentedControl {
         return view
     }()
     
+    // MARK: - Function
+    // MARK: init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.removeBackgroundAndDivider()
+        removeBackgroundAndDivider()
     }
+    
     override init(items: [Any]?) {
         super.init(items: items)
-        self.removeBackgroundAndDivider()
+        removeBackgroundAndDivider()
     }
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
     
+    // MARK: Layout Helpers
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setLayout()
+    }
+}
+
+// MARK: - extension
+extension RecommendingSegmentedControl {
+    
+    private func setLayout() {
+        self.addSubview(defaultUnderLineView)
+        self.addSubview(selectedUnderlineView)
+        
+        self.defaultUnderLineView.frame.origin.x = 0.0
+        let underlineFinalXPosition = (self.bounds.width / 2) * CGFloat(self.selectedSegmentIndex)
+        UIView.animate(withDuration: 0.1, animations: {self.selectedUnderlineView.frame.origin.x = underlineFinalXPosition})
+        self.layer.cornerRadius = 0
+    }
+    
+    //MARK: Custom Function
     private func removeBackgroundAndDivider() {
         let image = UIImage()
         self.setBackgroundImage(image, for: .normal, barMetrics: .default)
         self.setBackgroundImage(image, for: .selected, barMetrics: .default)
         self.setBackgroundImage(image, for: .highlighted, barMetrics: .default)
-        
         self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.defaultUnderLineView.frame.origin.x = 0.0
-
-        
-        let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.selectedSegmentIndex)
-        UIView.animate(
-            withDuration: 0.1,
-            animations: {
-                self.selectedUnderlineView.frame.origin.x = underlineFinalXPosition
-            }
-        )
-        
-        self.layer.cornerRadius = 0
-        
     }
 }
