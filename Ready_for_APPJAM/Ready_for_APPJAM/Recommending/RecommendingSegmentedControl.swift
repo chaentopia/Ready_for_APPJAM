@@ -73,5 +73,7 @@ final class RecommendingSegmentedControl: UISegmentedControl {
             }
         )
         
+        self.layer.cornerRadius = 0
+        
     }
 }

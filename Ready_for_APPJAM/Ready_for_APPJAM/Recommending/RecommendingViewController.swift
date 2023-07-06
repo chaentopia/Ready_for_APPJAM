@@ -95,7 +95,6 @@ extension RecommendingViewController {
         
         recommendingLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(42)
-//            $0.top.equalTo(view.safeAreaLayoutGuide).offset(22)
             $0.leading.equalToSuperview().offset(16)
         }
         
