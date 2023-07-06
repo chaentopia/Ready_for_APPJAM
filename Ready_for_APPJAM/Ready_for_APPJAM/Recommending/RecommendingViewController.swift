@@ -12,38 +12,23 @@ import Then
 
 final class RecommendingViewController: UIViewController {
     
+    // MARK: - Variables
+    // MARK: Component
     private let recommendingLabel = UILabel()
+    private let segmentedControl = RecommendingSegmentedControl(items: ["카톡 친구들", "학교 친구들"])
+    private lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+    private let kakaoFriendViewController = KakaoFriendViewController()
+    private let schoolFriendViewController = SchoolFriendViewController()
     
-    private let segmentedControl: UISegmentedControl = {
-        let segmentedControl = RecommendingSegmentedControl(items: ["카톡 친구들", "학교 친구들"])
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        return segmentedControl
-    }()
     
-    private let kakaoFriendViewController = UIViewController().then {
-        $0.view.backgroundColor = .systemPink
-    }
-    private let schoolFriendViewController = UIViewController().then {
-        $0.view.backgroundColor = .systemTeal
-    }
-    
-    private lazy var pageViewController: UIPageViewController = {
-        let vc = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        vc.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
-        vc.delegate = self
-        vc.dataSource = self
-        vc.view.translatesAutoresizingMaskIntoConstraints = false
-        return vc
-    }()
-    
+    // MARK: Property
     var dataViewControllers: [UIViewController] {
         [self.kakaoFriendViewController, self.schoolFriendViewController]
     }
     
+    /// 이동 방향을 결정해주는 변수, 방향 애니메이션을 위함
     var currentPage: Int = 0 {
       didSet {
-        // from segmentedControl -> pageViewController 업데이트
-        print(oldValue, self.currentPage)
         let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
         self.pageViewController.setViewControllers(
           [dataViewControllers[self.currentPage]],
@@ -54,37 +39,34 @@ final class RecommendingViewController: UIViewController {
       }
     }
     
+    // MARK: - Function
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setLayout()
-        
-        self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 16, weight: .medium)], for: .normal)
-        self.segmentedControl.setTitleTextAttributes(
-            [
-                NSAttributedString.Key.foregroundColor: UIColor.yellow,
-                .font: UIFont.systemFont(ofSize: 16, weight: .bold)
-            ],
-            for: .selected
-        )
-        self.segmentedControl.addTarget(self, action: #selector(changeValue(control:)), for: .valueChanged)
-        self.segmentedControl.selectedSegmentIndex = 0
-        self.changeValue(control: self.segmentedControl)
-    }
-    
-    @objc private func changeValue(control: UISegmentedControl) {
-        // 코드로 값을 변경하면 해당 메소드 호출 x
-        self.currentPage = control.selectedSegmentIndex
+        setDelegate()
+        setSegmentedControl()
     }
 }
 
+// MARK: - extension
 extension RecommendingViewController {
+    
+    // MARK: Layout Helpers
     private func setUI() {
+        setStyle()
+        setLayout()
+    }
+    
+    private func setStyle() {
         view.backgroundColor = .black
         recommendingLabel.do {
             $0.text = "추천하기"
             $0.textColor = .white
             $0.font = .boldSystemFont(ofSize: 20)
+        }
+        pageViewController.do {
+            $0.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
         }
     }
     
@@ -110,37 +92,54 @@ extension RecommendingViewController {
             $0.bottom.equalToSuperview()
         }
     }
+    
+    //MARK: Custom Function
+    private func setDelegate() {
+        pageViewController.delegate = self
+        pageViewController.dataSource = self
+    }
+    
+    private func setSegmentedControl() {
+        self.segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray, .font: UIFont.systemFont(ofSize: 16, weight: .medium)], for: .normal)
+        self.segmentedControl.setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: UIColor.yellow,
+                .font: UIFont.systemFont(ofSize: 16, weight: .bold)], for: .selected)
+        self.segmentedControl.addTarget(self, action: #selector(changeValue(control:)), for: .valueChanged)
+        self.segmentedControl.selectedSegmentIndex = 0
+        self.changeValue(control: self.segmentedControl)
+    }
+    
+    // MARK: Objc Function
+    @objc private func changeValue(control: UISegmentedControl) {
+        self.currentPage = control.selectedSegmentIndex
+    }
 }
 
-extension RecommendingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+// MARK: UIPageViewControllerDelegate
+extension RecommendingViewController: UIPageViewControllerDelegate { }
+
+// MARK: UIPageViewControllerDataSource
+extension RecommendingViewController: UIPageViewControllerDataSource {
+    
     func pageViewController(
         _ pageViewController: UIPageViewController,
         viewControllerBefore viewController: UIViewController
     ) -> UIViewController? {
-        guard
-            let index = self.dataViewControllers.firstIndex(of: viewController),
+        guard let index = self.dataViewControllers.firstIndex(of: viewController),
             index - 1 >= 0
         else { return nil }
         return self.dataViewControllers[index - 1]
     }
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        viewControllerAfter viewController: UIViewController
-    ) -> UIViewController? {
-        guard
-            let index = self.dataViewControllers.firstIndex(of: viewController),
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let index = self.dataViewControllers.firstIndex(of: viewController),
             index + 1 < self.dataViewControllers.count
         else { return nil }
         return self.dataViewControllers[index + 1]
     }
-    func pageViewController(
-        _ pageViewController: UIPageViewController,
-        didFinishAnimating finished: Bool,
-        previousViewControllers: [UIViewController],
-        transitionCompleted completed: Bool
-    ) {
-        guard
-            let viewController = pageViewController.viewControllers?[0],
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        guard let viewController = pageViewController.viewControllers?[0],
             let index = self.dataViewControllers.firstIndex(of: viewController)
         else { return }
         self.currentPage = index
