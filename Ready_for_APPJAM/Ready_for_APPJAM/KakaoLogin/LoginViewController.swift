@@ -65,11 +65,11 @@ extension LoginViewController {
             if let error = error {
                 print(error)
             } else if let profileImageUrl = user?.kakaoAccount?.profile?.profileImageUrl {
-                let profileViewController = ProfileViewController()
-                profileViewController.profileImage.kf.setImage(with: profileImageUrl)
-                profileViewController.nameLabel.text = user?.kakaoAccount?.profile?.nickname ?? "no nickname"
+                let kakaoProfileViewController = KakaoProfileViewController()
+                kakaoProfileViewController.profileImage.kf.setImage(with: profileImageUrl)
+                kakaoProfileViewController.nameLabel.text = user?.kakaoAccount?.profile?.nickname ?? "no nickname"
             
-                self.navigationController?.pushViewController(profileViewController, animated: true)
+                self.navigationController?.pushViewController(kakaoProfileViewController, animated: true)
                 self.navigationController?.navigationBar.isHidden = true
                 print("me() success")
             }
