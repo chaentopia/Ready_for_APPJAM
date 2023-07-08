@@ -56,9 +56,11 @@ extension KakaoFriendView {
         self.backgroundColor = .black
         
         kakaoFriendTableView.do {
-            $0.rowHeight = 76
+            $0.rowHeight = 77
             $0.register(FriendTableViewCell.self, forCellReuseIdentifier: FriendTableViewCell.identifier)
             $0.backgroundColor = .black
+            $0.separatorColor = .gray
+            $0.separatorStyle = .singleLine
         }
     }
     
@@ -66,7 +68,8 @@ extension KakaoFriendView {
         self.addSubview(kakaoFriendTableView)
         
         kakaoFriendTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
         }
     }
     

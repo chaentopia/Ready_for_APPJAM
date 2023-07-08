@@ -60,7 +60,7 @@ extension FriendTableViewCell {
         schoolLabel.do {
             $0.font = .systemFont(ofSize: 11)
             $0.setTextWithLineHeight(text: "이화여자대학교 융합콘텐츠학과 20학번", lineHeight: 15)
-            $0.textColor = .white
+            $0.textColor = .gray
         }
         
         addButton.do {
