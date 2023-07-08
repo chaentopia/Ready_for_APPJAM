@@ -11,12 +11,14 @@ import Then
 
 final class ProfileView: UIView {
     
-    private let profileLabel = UILabel()
-    private let myProfileView = MyProfileView()
+    private let navigationBarView = NavigationBarView()
+    private let myProfileHeaderView = MyProfileHeaderView()
+    lazy var myFriendTableView = UITableView(frame: .zero, style: .grouped)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
+        setDelegate()
     }
     
     @available(*, unavailable)
@@ -33,32 +35,89 @@ extension ProfileView {
     
     private func setStyle() {
         self.backgroundColor = .black
-        profileLabel.do {
-            $0.text = "프로필"
-            $0.textColor = .white
-            $0.font = .boldSystemFont(ofSize: 20)
+        myFriendTableView.do {
+            $0.rowHeight = 77
+            $0.register(MyFriendTableViewCell.self, forCellReuseIdentifier: MyFriendTableViewCell.identifier)
+            $0.register(MyProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "MyProfileHeaderView")
+            $0.backgroundColor = .black
+            $0.separatorColor = .gray
+            $0.separatorStyle = .singleLine
+            $0.showsVerticalScrollIndicator = false
         }
     }
     
     private func setLayout() {
-        self.addSubview(profileLabel)
-        self.addSubview(myProfileView)
+        let statusBarHeight = UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .first?
+                    .statusBarManager?
+                    .statusBarFrame.height ?? 20
+        self.addSubview(navigationBarView)
+        self.addSubview(myFriendTableView)
         
-        profileLabel.snp.makeConstraints {
-            let statusBarHeight = UIApplication.shared.connectedScenes
-                        .compactMap { $0 as? UIWindowScene }
-                        .first?
-                        .statusBarManager?
-                        .statusBarFrame.height ?? 20
-            
-            $0.top.equalTo(self.safeAreaInsets).offset(statusBarHeight + 22.adjusted)
-            $0.leading.equalToSuperview().offset(16.adjusted)
+        navigationBarView.snp.makeConstraints {
+            $0.top.equalTo(self.safeAreaInsets).offset(statusBarHeight)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(48.adjustedHeight)
         }
         
-        myProfileView.snp.makeConstraints {
-            $0.top.equalTo(profileLabel.snp.bottom).offset(22)
+        myFriendTableView.snp.makeConstraints {
+            $0.top.equalTo(navigationBarView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(230)
+            $0.bottom.equalToSuperview()
         }
+    }
+    
+    private func setDelegate() {
+        myFriendTableView.dataSource = self
+        myFriendTableView.delegate = self
+    }
+}
+
+extension ProfileView: UITableViewDelegate { }
+extension ProfileView: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0 :
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: MyProfileHeaderView.cellIdentifier) as! MyProfileHeaderView
+            return view
+        default :
+            return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 304 : 0
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MyFriendTableViewCell.identifier, for: indexPath) as? MyFriendTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.selectionStyle = .none
+//        cell.configureFriendCell(myFriendTableViewModel[indexPath.row])
+        return cell
+    }
+}
+
+
+public extension UIView {
+    func addBottomBorderWithColor(color: UIColor) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: 1)
+        self.layer.addSublayer(border)
+    }
+
+    func addAboveTheBottomBorderWithColor(color: UIColor) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
+        self.layer.addSublayer(border)
     }
 }
