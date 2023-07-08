@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // 2.
         self.window = UIWindow(windowScene: windowScene)
     // 3.
-        let navigationController = UINavigationController(rootViewController: RecommendingViewController())
+        let navigationController = UINavigationController(rootViewController: ProfileViewController())
         self.window?.rootViewController = navigationController
     // 4.
         self.window?.makeKeyAndVisible()
