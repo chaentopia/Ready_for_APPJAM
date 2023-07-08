@@ -18,6 +18,7 @@ final class FriendTableViewCell: UITableViewCell {
     let nameLabel = UILabel()
     let schoolLabel = UILabel()
     lazy var addButton = UIButton()
+    var isTapped: Bool = false
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -102,9 +103,14 @@ extension FriendTableViewCell {
     func configureFriendCell(_ model: FriendModel) {
         nameLabel.text = model.name
         schoolLabel.text = model.school
+        isTapped = model.isButtonSelected
+        
+        let imageName = isTapped ? "circle.fill" : "circle"
+        addButton.setImage(UIImage(systemName: imageName), for: .normal)
     }
     
     @objc private func changeAddButton() {
+        isTapped.toggle()
         addButton.setImage(UIImage(systemName: "circle.fill"), for: .normal)
     }
 }

@@ -13,22 +13,23 @@ import Then
 struct FriendModel {
     let name: String
     let school: String
+    var isButtonSelected: Bool
 }
 
 final class KakaoFriendView: UIView {
     
     var kakaoFriendTableViewModel: [FriendModel] = [
-        FriendModel(name: "정채은", school: "이화여자대학교 융합콘텐츠학과 21학번"),
-        FriendModel(name: "김채은", school: "이화여자대학교 융합콘텐츠학과 22학번"),
-        FriendModel(name: "이채은", school: "이화여자대학교 융합콘텐츠학과 23학번"),
-        FriendModel(name: "황채은", school: "이화여자대학교 융합콘텐츠학과 24학번"),
-        FriendModel(name: "최채은", school: "이화여자대학교 융합콘텐츠학과 25학번"),
-        FriendModel(name: "윤채은", school: "이화여자대학교 융합콘텐츠학과 26학번"),
-        FriendModel(name: "성채은", school: "이화여자대학교 융합콘텐츠학과 27학번"),
-        FriendModel(name: "박채은", school: "이화여자대학교 융합콘텐츠학과 28학번"),
-        FriendModel(name: "방채은", school: "이화여자대학교 융합콘텐츠학과 29학번"),
-        FriendModel(name: "홍채은", school: "이화여자대학교 융합콘텐츠학과 30학번"),
-        FriendModel(name: "백채은", school: "이화여자대학교 융합콘텐츠학과 20학번")]
+        FriendModel(name: "정채은", school: "이화여자대학교 융합콘텐츠학과 21학번", isButtonSelected: false),
+        FriendModel(name: "김채은", school: "이화여자대학교 융합콘텐츠학과 22학번", isButtonSelected: false),
+        FriendModel(name: "이채은", school: "이화여자대학교 융합콘텐츠학과 23학번", isButtonSelected: false),
+        FriendModel(name: "황채은", school: "이화여자대학교 융합콘텐츠학과 24학번", isButtonSelected: false),
+        FriendModel(name: "최채은", school: "이화여자대학교 융합콘텐츠학과 25학번", isButtonSelected: false),
+        FriendModel(name: "윤채은", school: "이화여자대학교 융합콘텐츠학과 26학번", isButtonSelected: false),
+        FriendModel(name: "성채은", school: "이화여자대학교 융합콘텐츠학과 27학번", isButtonSelected: false),
+        FriendModel(name: "박채은", school: "이화여자대학교 융합콘텐츠학과 28학번", isButtonSelected: false),
+        FriendModel(name: "방채은", school: "이화여자대학교 융합콘텐츠학과 29학번", isButtonSelected: false),
+        FriendModel(name: "홍채은", school: "이화여자대학교 융합콘텐츠학과 30학번", isButtonSelected: false),
+        FriendModel(name: "백채은", school: "이화여자대학교 융합콘텐츠학과 20학번", isButtonSelected: false)]
     
     lazy var kakaoFriendTableView = UITableView()
 
