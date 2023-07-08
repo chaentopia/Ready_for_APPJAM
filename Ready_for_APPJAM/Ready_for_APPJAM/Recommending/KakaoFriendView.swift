@@ -78,8 +78,9 @@ extension KakaoFriendView {
         let point = sender.convert(CGPoint.zero, to: kakaoFriendTableView)
         guard let indexPath = kakaoFriendTableView.indexPathForRow(at: point) else { return }
         kakaoFriendTableViewModel.remove(at: indexPath.row)
-        
-        kakaoFriendTableView.deleteRows(at: [indexPath], with: .right)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.kakaoFriendTableView.deleteRows(at: [indexPath], with: .right)
+        }
     }
 }
 
