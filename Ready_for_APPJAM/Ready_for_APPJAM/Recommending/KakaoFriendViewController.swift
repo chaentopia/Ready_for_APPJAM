@@ -12,7 +12,6 @@ import Then
 
 final class KakaoFriendViewController: UIViewController {
     
-    private let inviteBannerView = InviteBannerView()
     private let kakaoFriendView = KakaoFriendView()
 
     override func viewDidLoad() {
@@ -32,17 +31,10 @@ extension KakaoFriendViewController {
     }
     
     private func setLayout() {
-        view.addSubview(inviteBannerView)
         view.addSubview(kakaoFriendView)
-        inviteBannerView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(76)
-        }
         
         kakaoFriendView.snp.makeConstraints {
-            $0.top.equalTo(inviteBannerView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }

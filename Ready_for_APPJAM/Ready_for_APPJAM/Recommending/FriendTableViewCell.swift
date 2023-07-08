@@ -46,7 +46,6 @@ extension FriendTableViewCell {
         selectionStyle = .default
         
         profileImageView.do {
-//            $0.image = UIImage(named: "chae")
             $0.image = UIImage(systemName: "circle.fill")
             $0.tintColor = .white
         }

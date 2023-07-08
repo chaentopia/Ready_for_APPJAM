@@ -18,6 +18,8 @@ struct FriendModel {
 
 final class KakaoFriendView: UIView {
     
+    private let inviteBannerView = InviteBannerView()
+    
     var kakaoFriendTableViewModel: [FriendModel] = [
         FriendModel(name: "정채은", school: "이화여자대학교 융합콘텐츠학과 21학번", isButtonSelected: false),
         FriendModel(name: "김채은", school: "이화여자대학교 융합콘텐츠학과 22학번", isButtonSelected: false),
@@ -65,11 +67,19 @@ extension KakaoFriendView {
     }
     
     private func setLayout() {
+        self.addSubview(inviteBannerView)
         self.addSubview(kakaoFriendTableView)
+
+        inviteBannerView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(76)
+        }
         
         kakaoFriendTableView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
+            $0.top.equalTo(inviteBannerView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -105,6 +115,4 @@ extension KakaoFriendView: UITableViewDataSource {
         cell.configureFriendCell(kakaoFriendTableViewModel[indexPath.row])
         return cell
     }
-    
-    
 }
