@@ -35,7 +35,7 @@ extension EmptyFriendView {
     }
     
     private func setStyle() {
-        self.backgroundColor = .blue
+        self.backgroundColor = .black
         emptyImageView.do {
             $0.image = UIImage(named: "banner_invite")
         }

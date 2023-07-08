@@ -28,21 +28,20 @@ extension SchoolFriendViewController {
     }
     
     private func setStyle() {
-        view.backgroundColor = .red
+        view.backgroundColor = .black
     }
     
     private func setLayout() {
-//        view.addSubview(schoolFriendView)
-        
-//        schoolFriendView.snp.makeConstraints {
-//            $0.edges.equalToSuperview()
-//        }
-        
-        view.addSubview(emptyFriendView)
-        
-        emptyFriendView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
-            
+        if schoolFriendView.schoolFriendTableViewModel.count == 0 {
+            view.addSubview(emptyFriendView)
+            emptyFriendView.snp.makeConstraints {
+                $0.top.leading.trailing.equalToSuperview()
+            }
+        } else {
+            view.addSubview(schoolFriendView)
+            schoolFriendView.snp.makeConstraints {
+                $0.edges.equalToSuperview()
+            }
         }
     }
 }
