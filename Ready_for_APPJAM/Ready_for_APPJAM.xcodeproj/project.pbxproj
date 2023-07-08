@@ -26,6 +26,9 @@
 		C3C57BD82A595F9C00B84CAA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C57BD72A595F9C00B84CAA /* ProfileView.swift */; };
 		C3C57BDA2A59605800B84CAA /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C57BD92A59605800B84CAA /* MyProfileView.swift */; };
 		C3C57BDC2A5969D600B84CAA /* CountCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C57BDB2A5969D600B84CAA /* CountCustomView.swift */; };
+		C3C57BDE2A59718A00B84CAA /* MyFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C57BDD2A59718A00B84CAA /* MyFriendView.swift */; };
+		C3C57BE02A59719A00B84CAA /* MyFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C57BDF2A59719900B84CAA /* MyFriendTableViewCell.swift */; };
+		C3C57BE22A59CA3E00B84CAA /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C57BE12A59CA3E00B84CAA /* NavigationBarView.swift */; };
 		C3C89ADC2A4895770019D676 /* IGShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C89ADB2A4895770019D676 /* IGShareViewController.swift */; };
 		C3FAE9092A45B46A005F5063 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FAE9082A45B46A005F5063 /* AppDelegate.swift */; };
 		C3FAE90B2A45B46A005F5063 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FAE90A2A45B46A005F5063 /* SceneDelegate.swift */; };
@@ -61,6 +64,9 @@
 		C3C57BD72A595F9C00B84CAA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		C3C57BD92A59605800B84CAA /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		C3C57BDB2A5969D600B84CAA /* CountCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountCustomView.swift; sourceTree = "<group>"; };
+		C3C57BDD2A59718A00B84CAA /* MyFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendView.swift; sourceTree = "<group>"; };
+		C3C57BDF2A59719900B84CAA /* MyFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendTableViewCell.swift; sourceTree = "<group>"; };
+		C3C57BE12A59CA3E00B84CAA /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
 		C3C89ADB2A4895770019D676 /* IGShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGShareViewController.swift; sourceTree = "<group>"; };
 		C3FAE9052A45B46A005F5063 /* Ready_for_APPJAM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ready_for_APPJAM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FAE9082A45B46A005F5063 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,7 +135,10 @@
 			children = (
 				C3C57BD42A595DFF00B84CAA /* ProfileViewController.swift */,
 				C3C57BD72A595F9C00B84CAA /* ProfileView.swift */,
+				C3C57BE12A59CA3E00B84CAA /* NavigationBarView.swift */,
 				C3C57BD92A59605800B84CAA /* MyProfileView.swift */,
+				C3C57BDD2A59718A00B84CAA /* MyFriendView.swift */,
+				C3C57BDF2A59719900B84CAA /* MyFriendTableViewCell.swift */,
 				C3C57BDB2A5969D600B84CAA /* CountCustomView.swift */,
 			);
 			path = Profile;
@@ -258,6 +267,7 @@
 			files = (
 				C3C57BDC2A5969D600B84CAA /* CountCustomView.swift in Sources */,
 				C3FAE91D2A45B4C7005F5063 /* LoginViewController.swift in Sources */,
+				C3C57BDE2A59718A00B84CAA /* MyFriendView.swift in Sources */,
 				C3C57BCF2A59472B00B84CAA /* FriendModel.swift in Sources */,
 				C3C57BD12A59482500B84CAA /* EmptyFriendView.swift in Sources */,
 				C3C57BCB2A5915B400B84CAA /* FriendTableViewCell.swift in Sources */,
@@ -266,6 +276,7 @@
 				C3C57BD52A595DFF00B84CAA /* ProfileViewController.swift in Sources */,
 				C3C57BB82A56AAF100B84CAA /* RecommendingSegmentedControl.swift in Sources */,
 				C3A79A0D2A496E2700D3EFD8 /* NameViewController.swift in Sources */,
+				C3C57BE02A59719A00B84CAA /* MyFriendTableViewCell.swift in Sources */,
 				C3C57BBF2A56C5CC00B84CAA /* InviteBannerView.swift in Sources */,
 				C3C57BB62A56AA5000B84CAA /* RecommendingViewController.swift in Sources */,
 				C3A4614C2A4AD2BF00734EF8 /* TableViewCell.swift in Sources */,
@@ -280,6 +291,7 @@
 				C3FAE92E2A45C5F8005F5063 /* KakaoProfileViewController.swift in Sources */,
 				C3A461502A4DE3D100734EF8 /* AppleViewController.swift in Sources */,
 				C3FAE90B2A45B46A005F5063 /* SceneDelegate.swift in Sources */,
+				C3C57BE22A59CA3E00B84CAA /* NavigationBarView.swift in Sources */,
 				C3FAE9302A45D943005F5063 /* UIImageView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
