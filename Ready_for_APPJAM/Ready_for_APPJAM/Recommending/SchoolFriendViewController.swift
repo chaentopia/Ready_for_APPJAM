@@ -7,14 +7,12 @@
 
 import UIKit
 
-import UIKit
-
 import SnapKit
 import Then
 
 final class SchoolFriendViewController: UIViewController {
     
-    private let inviteBannerView = InviteBannerView()
+    private let schoolFriendView = SchoolFriendView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +31,10 @@ extension SchoolFriendViewController {
     }
     
     private func setLayout() {
-        view.addSubview(inviteBannerView)
-        inviteBannerView.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(76)
+        view.addSubview(schoolFriendView)
+        
+        schoolFriendView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }

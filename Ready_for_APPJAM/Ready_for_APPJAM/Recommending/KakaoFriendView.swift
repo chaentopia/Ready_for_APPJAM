@@ -10,12 +10,6 @@ import UIKit
 import SnapKit
 import Then
 
-struct FriendModel {
-    let name: String
-    let school: String
-    var isButtonSelected: Bool
-}
-
 final class KakaoFriendView: UIView {
     
     private let inviteBannerView = InviteBannerView()
