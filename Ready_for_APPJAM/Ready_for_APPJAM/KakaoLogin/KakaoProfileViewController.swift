@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  KakaoProfileViewController.swift
 //  Ready_for_APPJAM
 //
 //  Created by 정채은 on 2023/06/23.
@@ -12,7 +12,7 @@ import Then
 import KakaoSDKUser
 
 
-final class ProfileViewController: UIViewController {
+final class KakaoProfileViewController: UIViewController {
     
     lazy var profileImage = UIImageView().then {
         $0.image = UIImage(systemName: "person.crop.circle")
@@ -39,7 +39,7 @@ final class ProfileViewController: UIViewController {
     }
 }
 
-extension ProfileViewController {
+extension KakaoProfileViewController {
     private func setStyle() {
         view.backgroundColor = .white
     }
