@@ -13,6 +13,7 @@ import Then
 final class SchoolFriendViewController: UIViewController {
     
     private let schoolFriendView = SchoolFriendView()
+    private let emptyFriendView = EmptyFriendView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +28,21 @@ extension SchoolFriendViewController {
     }
     
     private func setStyle() {
-        view.backgroundColor = .black
+        view.backgroundColor = .red
     }
     
     private func setLayout() {
-        view.addSubview(schoolFriendView)
+//        view.addSubview(schoolFriendView)
         
-        schoolFriendView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+//        schoolFriendView.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//        }
+        
+        view.addSubview(emptyFriendView)
+        
+        emptyFriendView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            
         }
     }
 }

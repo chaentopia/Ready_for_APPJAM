@@ -76,8 +76,14 @@ extension RecommendingViewController {
         view.addSubview(pageViewController.view)
         
         recommendingLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(42)
-            $0.leading.equalToSuperview().offset(16)
+            let statusBarHeight = UIApplication.shared.connectedScenes
+                        .compactMap { $0 as? UIWindowScene }
+                        .first?
+                        .statusBarManager?
+                        .statusBarFrame.height ?? 20
+            
+            $0.top.equalTo(view.safeAreaInsets).offset(statusBarHeight + 22.adjusted)
+            $0.leading.equalToSuperview().offset(16.adjusted)
         }
         
         segmentedControl.snp.makeConstraints {

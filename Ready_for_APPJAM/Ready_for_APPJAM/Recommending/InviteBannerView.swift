@@ -37,7 +37,7 @@ extension InviteBannerView {
     
     private func setStyle() {
         inviteImageView.do {
-            $0.image = UIImage(systemName: "circle.fill")
+            $0.image = UIImage(named: "banner_invite")
             $0.tintColor = .white
         }
         
