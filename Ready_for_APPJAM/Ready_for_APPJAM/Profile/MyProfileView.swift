@@ -42,6 +42,7 @@ extension MyProfileView {
     private func setStyle() {
         self.backgroundColor = .darkGray
         self.layer.cornerRadius = 12
+        self.layer.masksToBounds = true
         
         profileImageView.do {
             $0.image = UIImage(named: "basic")
@@ -94,7 +95,6 @@ extension MyProfileView {
             $0.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 4)
             $0.setTitle("그룹 추가", for: .normal)
         }
-        
     }
     
     private func setLayout() {
@@ -107,6 +107,11 @@ extension MyProfileView {
         self.addSubview(friendView)
         self.addSubview(pointView)
         self.addSubview(addGroupButton)
+        
+        self.snp.makeConstraints {
+            $0.height.equalTo(230)
+            $0.width.equalTo(343)
+        }
         
         profileImageView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(20)
