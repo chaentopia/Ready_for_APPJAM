@@ -14,7 +14,9 @@ final class ProfileView: UIView {
     private let navigationBarView = NavigationBarView()
     private let myProfileHeaderView = MyProfileHeaderView()
     lazy var myFriendTableView = UITableView(frame: .zero, style: .grouped)
-
+    lazy var topButton = UIButton()
+    private var isButtonHidden: Bool = false
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -44,6 +46,15 @@ extension ProfileView {
             $0.separatorStyle = .singleLine
             $0.showsVerticalScrollIndicator = false
         }
+        
+        topButton.do {
+            $0.backgroundColor = .white
+            $0.makeCornerRound(radius: 24)
+            $0.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+            $0.tintColor = .black
+            $0.addTarget(self, action: #selector(topButtonTapped), for: .touchUpInside)
+            $0.isHidden = true
+        }
     }
     
     private func setLayout() {
@@ -54,6 +65,7 @@ extension ProfileView {
                     .statusBarFrame.height ?? 20
         self.addSubview(navigationBarView)
         self.addSubview(myFriendTableView)
+        self.addSubview(topButton)
         
         navigationBarView.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaInsets).offset(statusBarHeight)
@@ -66,15 +78,35 @@ extension ProfileView {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalToSuperview()
         }
+        
+        topButton.snp.makeConstraints {
+            $0.width.height.equalTo(48)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(76)
+        }
     }
     
     private func setDelegate() {
         myFriendTableView.dataSource = self
         myFriendTableView.delegate = self
     }
+    
+    private func updateButtonVisibility() {
+        topButton.isHidden = isButtonHidden
+    }
+    
+    @objc func topButtonTapped() {
+        myFriendTableView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
 }
 
-extension ProfileView: UITableViewDelegate { }
+extension ProfileView: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // 스크롤이 맨 위에 있는지 여부를 확인하고 isScrollAtTop 값을 업데이트합니다.
+        isButtonHidden = scrollView.contentOffset.y <= 0
+        updateButtonVisibility()
+    }
+}
 extension ProfileView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -119,5 +151,10 @@ public extension UIView {
         border.backgroundColor = color.cgColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - 1, width: self.frame.size.width, height: 1)
         self.layer.addSublayer(border)
+    }
+    
+    func makeCornerRound(radius: CGFloat) {
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
     }
 }
