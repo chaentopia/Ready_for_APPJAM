@@ -141,10 +141,10 @@
 				C3C57BD72A595F9C00B84CAA /* ProfileView.swift */,
 				C3C57BE12A59CA3E00B84CAA /* NavigationBarView.swift */,
 				C3C57BD92A59605800B84CAA /* MyProfileView.swift */,
-				C3C57BDF2A59719900B84CAA /* MyFriendTableViewCell.swift */,
-				C3C57BDB2A5969D600B84CAA /* CountCustomView.swift */,
 				C3C57BE52A59D1C700B84CAA /* FriendCountView.swift */,
 				C3C57BE72A59D21400B84CAA /* MyProfileHeaderView.swift */,
+				C3C57BDF2A59719900B84CAA /* MyFriendTableViewCell.swift */,
+				C3C57BDB2A5969D600B84CAA /* CountCustomView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
